@@ -1,5 +1,5 @@
 {
-  "name": "my-turborepo",
+  "name": "polyglot-web",
   "private": true,
   "scripts": {
     "build": "turbo run build",
