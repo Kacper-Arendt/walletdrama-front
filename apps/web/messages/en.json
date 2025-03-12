@@ -1,5 +1,28 @@
 {
 	"HomePage": {
 		"title": "Hello world!"
+	},
+	"Shared": {
+		"logout": "Logout",
+		"back": "Back",
+		"save": "Save",
+		"cancel": "Cancel",
+		"email": "Email",
+		"password": "Password",
+		"login": "Login",
+		"register": "Register",
+		"loading": "Loading..."
+	},
+	"Login": {
+		"welcome_back": "Welcome back!",
+		"forgot_password": "Forgot password?",
+		"dont_have_an_account": "Don't have an account?"
+	},
+	"Register": {
+		"hello": "Hello!",
+		"already_have_an_account": "Already have an account?",
+		"registration_successful": "Registration successful!",
+		"registration_failed": "Registration failed!",
+		"email_already_exists": "Email already exists!"
 	}
 }
