@@ -1,4 +1,5 @@
 export const appConfig = {
+	name: "Polyglot",
 	locales: ["en", "pl"],
 	defaultLocale: "en",
 };

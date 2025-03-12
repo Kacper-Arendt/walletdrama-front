@@ -1,10 +1,11 @@
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "components/ui/card";
-import { registerUser } from "features/auth/register/register.action";
-import type { ActionResponse } from "features/auth/register/types";
+import { loginUser } from "features/auth/login/login.action";
+import type { ActionResponse } from "features/auth/login/types";
 import { useTranslations } from "next-intl";
 import Form from "next/form";
+import Link from "next/link";
 import { useActionState } from "react";
 import { AlertDestructive } from "ui/alerts/AlertDestructive";
 import { AlertInfo } from "ui/alerts/AlertInfo";
@@ -16,16 +17,16 @@ const initialValues: ActionResponse = {
 	message: "",
 };
 
-export function RegisterForm() {
-	const t = useTranslations("Register");
+export function LoginForm() {
+	const t = useTranslations("Login");
 	const tShared = useTranslations("Shared");
-	const [state, action] = useActionState(registerUser, initialValues);
+	const [state, action] = useActionState(loginUser, initialValues);
 
 	return (
 		<div className="flex flex-col gap-6">
 			<Card>
 				<CardHeader className="text-center">
-					<CardTitle className="text-xl">{t("hello")}</CardTitle>
+					<CardTitle className="text-xl">{t("welcome_back")}</CardTitle>
 				</CardHeader>
 				<CardContent>
 					{state?.success && <AlertInfo title={state.message} />}
@@ -51,13 +52,24 @@ export function RegisterForm() {
 									defaultValue={state?.inputs?.password}
 									required
 								/>
-								<SubmitButton text={tShared("register")} />
+								<SubmitButton text={tShared("login")} />
 							</div>
-							<div className="text-center text-sm">
-								{t("already_have_an_account")}{" "}
-								<a href="/auth" className="underline underline-offset-4">
-									{tShared("login")}
-								</a>
+							<div className="flex flex-col gap-3 items-center justify-center">
+								{/*<Link*/}
+								{/*	href="/auth/forgot"*/}
+								{/*	className="text-sm underline underline-offset-4"*/}
+								{/*>*/}
+								{/*	{t("forgot_password")}*/}
+								{/*</Link>*/}
+								<div className="text-center text-sm">
+									{t("dont_have_an_account")}{" "}
+									<Link
+										href="/auth/register"
+										className="underline underline-offset-4"
+									>
+										{tShared("register")}
+									</Link>
+								</div>
 							</div>
 						</div>
 					</Form>

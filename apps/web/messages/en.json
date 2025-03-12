@@ -1,6 +1,7 @@
 {
-	"HomePage": {
-		"title": "Hello world!"
+	"Pages": {
+		"login": "Login",
+		"register": "Register"
 	},
 	"Shared": {
 		"logout": "Logout",
@@ -11,12 +12,14 @@
 		"password": "Password",
 		"login": "Login",
 		"register": "Register",
-		"loading": "Loading..."
+		"loading": "Loading...",
+		"submit": "Submit"
 	},
 	"Login": {
 		"welcome_back": "Welcome back!",
 		"forgot_password": "Forgot password?",
-		"dont_have_an_account": "Don't have an account?"
+		"dont_have_an_account": "Don't have an account?",
+		"login_failed": "Login failed!"
 	},
 	"Register": {
 		"hello": "Hello!",

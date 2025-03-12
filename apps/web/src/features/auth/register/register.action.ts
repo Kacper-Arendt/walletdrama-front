@@ -1,27 +1,17 @@
 "use server";
-import { register } from "features/auth/register/api/register";
+import { register } from "features/auth/register/register.api";
+import type {
+	ActionResponse,
+	RegisterUserPayload,
+} from "features/auth/register/types";
 import { getLangServer } from "i18n/getLangServer";
 import { getTranslations } from "next-intl/server";
 import { z } from "zod";
-
-export interface RegisterUserPayload {
-	email: string;
-	password: string;
-}
 
 const schema = z.object({
 	email: z.string().email("Invalid email"),
 	password: z.string().min(8, "Password must be at least 8 characters"),
 });
-
-export interface ActionResponse {
-	success: boolean | null;
-	message: string;
-	errors?: {
-		[K in keyof RegisterUserPayload]?: string[];
-	};
-	inputs?: RegisterUserPayload;
-}
 
 export async function registerUser(
 	_: ActionResponse | null,
