@@ -1,4 +1,4 @@
-import { Register } from "features/auth/register/Register";
+import Register from "features/auth/register/Register";
 import { getLangServer } from "i18n/getLangServer";
 import { getTranslations } from "next-intl/server";
 import { titleGenerator } from "utils/titleGenerator";
