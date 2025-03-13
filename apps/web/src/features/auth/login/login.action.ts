@@ -1,4 +1,5 @@
 "use server";
+import { handleTokens } from "auth/handleTokens";
 import { login } from "features/auth/login/login.api";
 import type {
 	ActionResponse,
@@ -7,8 +8,6 @@ import type {
 } from "features/auth/login/types";
 import { getLangServer } from "i18n/getLangServer";
 import { getTranslations } from "next-intl/server";
-import type { ResponseCookie } from "next/dist/compiled/@edge-runtime/cookies";
-import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 
@@ -16,30 +15,6 @@ const schema = z.object({
 	email: z.string().email("Invalid email"),
 	password: z.string(),
 });
-
-const handleTokens = async (tokens: LoginResponse) => {
-	const cookieStore = await cookies();
-
-	const expiresInMilliseconds = tokens.expiresIn * 1000;
-	const adjustedExpiresInMilliseconds = expiresInMilliseconds * 0.9;
-	const expires = new Date(Date.now() + adjustedExpiresInMilliseconds);
-
-	const options: Partial<ResponseCookie> = {
-		httpOnly: true,
-		expires,
-		secure: true,
-		path: "/",
-		sameSite: "strict",
-	};
-
-	cookieStore.set("token", `${tokens.tokenType} ${tokens.accessToken}`, {
-		...options,
-	});
-
-	cookieStore.set("refreshToken", tokens.refreshToken, {
-		...options,
-	});
-};
 
 export async function loginUser(
 	_: ActionResponse | null,
@@ -77,11 +52,9 @@ export async function loginUser(
 			};
 		}
 		const responseData: LoginResponse = await response.json();
-
 		await handleTokens(responseData);
 
-		// redirectPath = "/";
-		redirectPath = "/auth/register";
+		redirectPath = "/system";
 
 		return {
 			success: true,
