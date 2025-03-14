@@ -1,0 +1,32 @@
+{
+	"name": "@repo/ui",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"exports": {
+		"./lib/*": "./src/lib/*.ts",
+		"./components/*": "./src/components/*.tsx",
+		"./global.css": "./src/global.css"
+	},
+	"dependencies": {
+		"@radix-ui/react-label": "^2.1.2",
+		"@radix-ui/react-slot": "^1.1.2",
+		"class-variance-authority": "^0.7.1",
+		"tailwind-merge": "^3.0.2",
+		"clsx": "^2.1.1",
+		"tailwindcss-animate": "^1.0.7"
+	},
+	"devDependencies": {
+		"@repo/typescript-config": "workspace:*",
+		"typescript": "catalog:",
+		"@types/react": "catalog:",
+		"@types/react-dom": "catalog:",
+		"tailwindcss": "catalog:"
+	}
+}
