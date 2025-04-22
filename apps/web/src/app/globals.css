@@ -1,0 +1,4 @@
+/*@import "@ui/global.css";*/
+
+@import "../../../../packages/ui/src/global.css";
+@source "../../../../packages/ui";
