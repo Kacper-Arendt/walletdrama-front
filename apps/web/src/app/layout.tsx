@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
 import { appConfig } from "@/config/app";
+import { Toaster } from "@ui/components/ui/sonner";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale } from "next-intl/server";
 
@@ -26,7 +27,10 @@ export default async function RootLayout({
 	return (
 		<html lang={locale}>
 			<body className={`${roboto.variable} antialiased`}>
-				<NextIntlClientProvider>{children}</NextIntlClientProvider>
+				<NextIntlClientProvider>
+					{children}
+					<Toaster richColors />
+				</NextIntlClientProvider>
 			</body>
 		</html>
 	);

@@ -5,10 +5,5 @@ const RegisterForm = lazy(
 );
 
 export default function Register() {
-	return (
-		<>
-			{/*<Title>{titleGenerator({ title: t("pages.register") })}</Title>*/}
-			<RegisterForm />
-		</>
-	);
+	return <RegisterForm />;
 }

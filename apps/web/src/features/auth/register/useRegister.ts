@@ -16,9 +16,15 @@ export const useRegister = () => {
 
 			if (resp.status === 400) {
 				const data = await resp.json();
-				if (data?.errors?.DuplicateUserName) {
+				console.log(data);
+
+				if (
+					data?.errors?.DuplicateUserName ||
+					data?.code === "user_creation_failed"
+				) {
 					return toast.error(t("register.email_already_exists"));
 				}
+				return toast.error(t("register.fail"));
 			}
 		} catch (e) {
 			toast.error(t("register.fail"));
