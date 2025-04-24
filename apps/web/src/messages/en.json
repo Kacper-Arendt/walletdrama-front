@@ -2,7 +2,7 @@
 	"pages": {
 		"login": "Login",
 		"register": "Register",
-		"organizations": "Organizations"
+		"teams": "Teams"
 	},
 	"shared": {
 		"logout": "Logout",
@@ -22,7 +22,8 @@
 		"dont_have_an_account": "Don't have an account?",
 		"login_failed": "Login failed!",
 		"invalid_credentials": "Invalid credentials!",
-		"fail": "Login failed!"
+		"fail": "Login failed!",
+		"locked_out": "Your account is locked out due to too many failed login attempts. Please try again later."
 	},
 	"register": {
 		"hello": "Hello!",

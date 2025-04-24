@@ -5,10 +5,5 @@ const LoginForm = lazy(
 );
 
 export const Login = () => {
-	return (
-		<>
-			{/*<Title>{titleGenerator({ title: t("pages.login") })}</Title>*/}
-			<LoginForm />
-		</>
-	);
+	return <LoginForm />;
 };

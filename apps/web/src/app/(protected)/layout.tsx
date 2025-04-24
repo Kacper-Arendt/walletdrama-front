@@ -1,12 +1,12 @@
-export default function MainLayout({
+import { SystemLayout } from "@/components/layouts/SystemLayout";
+import { getAuthOrRedirect } from "@/features/auth/session/checkUserAuth";
+
+export default async function MainLayout({
 	children,
 }: {
 	children: React.ReactNode;
 }) {
-	return (
-		<div>
-			<p>Main layout</p>
-			{children}
-		</div>
-	);
+	await getAuthOrRedirect();
+
+	return <SystemLayout>{children}</SystemLayout>;
 }
