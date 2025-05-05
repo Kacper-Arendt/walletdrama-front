@@ -19,9 +19,7 @@ const AppSidebar = async () => {
 			<SidebarContent>
 				<Nav />
 			</SidebarContent>
-			<SidebarFooter>
-				<NavUser name={user?.name} />
-			</SidebarFooter>
+			<SidebarFooter>{user && <NavUser name={user?.name} />}</SidebarFooter>
 		</Sidebar>
 	);
 };
@@ -37,7 +35,7 @@ export const SystemLayout = ({ children }: { children: React.ReactNode }) => {
 						<Separator orientation="vertical" className="mr-2 h-4" />
 					</div>
 				</header>
-				{children}
+				<main className="p-3">{children}</main>
 			</SidebarInset>
 		</SidebarProvider>
 	);
