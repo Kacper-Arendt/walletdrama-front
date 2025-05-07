@@ -14,7 +14,8 @@
 		"login": "Login",
 		"register": "Register",
 		"loading": "Loading...",
-		"submit": "Submit"
+		"submit": "Submit",
+		"go": "Go"
 	},
 	"login": {
 		"welcome_back": "Welcome back!",
@@ -41,5 +42,14 @@
 	"errors": {
 		"queryError": "An error occurred while processing your request.",
 		"tryAgain": "Please try again"
+	},
+	"teams": {
+		"your_teams": "Your teams",
+		"create_team": "Create team",
+		"create_team_description": "To create a budget, you need to create a team first. You can be the only member of the team, but you can also invite others later if you want.",
+		"team_name": "Name",
+		"save": "Save",
+		"create_success": "Team created!",
+		"create_error": "Team creation failed!"
 	}
 }

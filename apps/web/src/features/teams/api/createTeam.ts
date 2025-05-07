@@ -1,23 +1,23 @@
 import { apiConfig } from "@/config/app";
 import { getSessionCookie } from "@/features/auth/session/getSessionCookie";
-import type { Teams } from "@/features/teams/types/teams";
 
-export const getTeams = async () => {
+export const createTeam = async (data: { name: string }) => {
 	const session = await getSessionCookie();
 	const response = await fetch(`${apiConfig.baseUrl}/api/teams`, {
-		method: "GET",
+		method: "POST",
 		credentials: "include",
+		body: JSON.stringify(data),
 		headers: {
+			"Content-Type": "application/json",
+			Accept: "application/json",
 			Cookie: session?.sessionCookie ?? "",
 		},
-		cache: "force-cache",
-		next: { tags: ["teams"] },
 	});
 
 	if (!response.ok) {
-		throw new Error("Failed to fetch teams");
+		throw new Error("Failed to save team");
 	}
 
-	const data = await response.json();
-	return data as Teams[];
+	const res = await response.json();
+	return res as { id: string };
 };
