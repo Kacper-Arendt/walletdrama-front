@@ -48,7 +48,7 @@ export default function LoginForm() {
 			const resp = await login(values);
 
 			if (resp.ok) {
-				router.push("/");
+				router.push("/teams");
 			}
 
 			// const statusMessages: Record<ResponseStatus["status"], string> = {

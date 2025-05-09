@@ -51,5 +51,15 @@
 		"save": "Save",
 		"create_success": "Team created!",
 		"create_error": "Team creation failed!"
+	},
+	"team": {
+		"danger_zone": "Danger zone",
+		"delete": {
+			"delete": "Delete team",
+			"confirm": "Are you sure you want to delete this team?",
+			"description": "This action cannot be undone.",
+			"error": "Team deletion failed!",
+			"success": "Team deleted!"
+		}
 	}
 }
