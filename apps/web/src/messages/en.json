@@ -15,7 +15,9 @@
 		"register": "Register",
 		"loading": "Loading...",
 		"submit": "Submit",
-		"go": "Go"
+		"go": "Go",
+		"role": "Role",
+		"noResults": "No results found"
 	},
 	"login": {
 		"welcome_back": "Welcome back!",
