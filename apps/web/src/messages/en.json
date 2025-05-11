@@ -17,7 +17,9 @@
 		"submit": "Submit",
 		"go": "Go",
 		"role": "Role",
-		"noResults": "No results found"
+		"noResults": "No results found",
+		"my_account": "My account",
+		"openMenu": "Open menu"
 	},
 	"login": {
 		"welcome_back": "Welcome back!",
