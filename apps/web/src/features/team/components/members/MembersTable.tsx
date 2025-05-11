@@ -7,7 +7,9 @@ import {
 	useReactTable,
 } from "@tanstack/react-table";
 
+import { ChangeRoleModal } from "@/features/team/components/members/ChangeRoleModal";
 import type { TeamMember } from "@/features/team/types/team";
+import { Typography } from "@ui/components/ui/Typography";
 import {
 	Table,
 	TableBody,
@@ -20,9 +22,10 @@ import { useTranslations } from "next-intl";
 
 interface DataTableProps {
 	data: TeamMember[];
+	isOwner: boolean;
 }
 
-export function MembersTable({ data }: DataTableProps) {
+export function MembersTable({ data, isOwner }: DataTableProps) {
 	const t = useTranslations();
 
 	const columns: ColumnDef<TeamMember>[] = [
@@ -33,6 +36,19 @@ export function MembersTable({ data }: DataTableProps) {
 		{
 			accessorKey: "role",
 			header: t("shared.role"),
+			cell: ({ row }) => (
+				<div className="flex items-center gap-2">
+					<Typography variant="caption" className="text-gray-900">
+						{t(`team.roles.${row.original.role.toLowerCase()}`)}
+					</Typography>
+					{isOwner && (
+						<ChangeRoleModal
+							memberId={row.original.id}
+							currentRole={row.original.role}
+						/>
+					)}
+				</div>
+			),
 		},
 	];
 

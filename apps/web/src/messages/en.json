@@ -62,6 +62,16 @@
 			"description": "This action cannot be undone.",
 			"error": "Team deletion failed!",
 			"success": "Team deleted!"
-		}
+		},
+		"roles": {
+			"admin": "Admin",
+			"member": "Member",
+			"owner": "Owner",
+			"viewer": "Viewer"
+		},
+		"role_change_success": "Role changed!",
+		"role_change_error": "Role change failed!",
+		"change_role": "Change role",
+		"change_role_description": "Change the role of a team member."
 	}
 }

@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import type { ReactNode } from "react";
+import type { JSX, ReactNode } from "react";
 
 type TypographyProps = {
 	variant: "title" | "subtitle" | "heading" | "body" | "caption" | "small";
@@ -12,7 +12,7 @@ export const Typography = ({
 	className,
 	children,
 }: TypographyProps) => {
-	const baseStyles: Record<TypographyProps, string> = {
+	const baseStyles: Record<TypographyProps["variant"], string> = {
 		title: "text-2xl font-bold text-gray-900",
 		subtitle: "text-xl font-semibold text-gray-800",
 		heading: "text-xl font-medium text-gray-700",
@@ -21,7 +21,10 @@ export const Typography = ({
 		small: "text-xs text-gray-400",
 	};
 
-	const components: Record<TypographyProps, string> = {
+	const components: Record<
+		TypographyProps["variant"],
+		keyof JSX.IntrinsicElements
+	> = {
 		title: "h1",
 		subtitle: "h2",
 		heading: "h3",
@@ -30,7 +33,7 @@ export const Typography = ({
 		small: "small",
 	};
 
-	const Component = components[variant] || "p";
+	const Component = components[variant];
 
 	return (
 		<Component className={clsx(baseStyles[variant], className)}>
