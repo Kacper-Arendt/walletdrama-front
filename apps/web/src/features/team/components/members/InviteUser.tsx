@@ -1,6 +1,5 @@
 "use client";
 
-import { createTeamAction } from "@/features/teams/actions/createTeamAction";
 import { Button } from "@ui/components/ui/button";
 import {
 	Dialog,
@@ -17,23 +16,23 @@ import { toast } from "@ui/components/ui/sonner";
 import { useTranslations } from "next-intl";
 import { useTransition } from "react";
 
-export const AddTeam = () => {
+export const InviteUser = () => {
 	const t = useTranslations();
 	const [isPending, startTransition] = useTransition();
 
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
 		startTransition(() => {
 			(async () => {
 				try {
-					e.preventDefault();
 					const formData = new FormData(e.currentTarget);
-					const name = formData.get("name") as string;
+					const email = formData.get("email") as string;
 
-					const res = await createTeamAction(name);
-					if (res?.id) toast.success(t("teams.create_success"));
-					else toast.error(t("teams.create_error"));
+					// Simulate API call to invite user
+					// await inviteUserAction(email);
+					toast.success(t("team.invite_success"));
 				} catch (error) {
-					toast.error(t("teams.create_error"));
+					toast.error(t("team.invite_error"));
 				}
 			})();
 		});
@@ -42,33 +41,35 @@ export const AddTeam = () => {
 	return (
 		<Dialog>
 			<DialogTrigger asChild>
-				<Button variant="default">{t("teams.create_team")}</Button>
+				<Button variant="default" className="">
+					{t("team.invite_user")}
+				</Button>
 			</DialogTrigger>
 			<DialogContent className="sm:max-w-[425px]">
 				<DialogHeader>
-					<DialogTitle>{t("teams.create_team")}</DialogTitle>
+					<DialogTitle>{t("team.invite_user")}</DialogTitle>
 					<DialogDescription>
-						{t("teams.create_team_description")}{" "}
+						{t("team.invite_user_description")}
 					</DialogDescription>
 				</DialogHeader>
 				<form onSubmit={handleSubmit}>
 					<div className="grid gap-4 py-4">
 						<div className="grid grid-cols-4 items-center gap-4">
-							<Label htmlFor="name" className="text-right">
-								{t("teams.team_name")}
+							<Label htmlFor="email" className="text-right">
+								{t("shared.email")}
 							</Label>
 							<Input
-								id="name"
-								name="name"
+								id="email"
+								name="email"
+								type="email"
 								className="col-span-3"
-								minLength={3}
 								required
 							/>
 						</div>
 					</div>
 					<DialogFooter>
-						<Button type="submit">
-							{t(isPending ? "shared.loading" : "shared.save")}
+						<Button type="submit" disabled={isPending}>
+							{isPending ? t("shared.loading") : t("shared.submit")}
 						</Button>
 					</DialogFooter>
 				</form>

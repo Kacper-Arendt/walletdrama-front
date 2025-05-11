@@ -59,7 +59,7 @@ export function MembersTable({ data, isOwner }: DataTableProps) {
 	});
 
 	return (
-		<div className="rounded-md border">
+		<div className="rounded-md border w-full max-w-[40rem]">
 			<Table>
 				<TableHeader>
 					{table.getHeaderGroups().map((headerGroup) => (

@@ -19,7 +19,7 @@ export const TeamLayout = async ({
 				<NavLink href={`/teams/${team.id}/members`}>Members</NavLink>
 				<NavLink href={`/teams/${team.id}/settings`}>Settings</NavLink>
 			</div>
-			<div>{children}</div>
+			<div className="pt-3">{children}</div>
 		</div>
 	);
 };

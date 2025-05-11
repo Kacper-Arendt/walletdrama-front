@@ -14,7 +14,7 @@ import { Label } from "@ui/components/ui/label";
 import { toast } from "@ui/components/ui/sonner";
 import { Pen } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
+import { useState, useTransition } from "react";
 
 interface ChangeRoleModalProps {
 	memberId: string;
@@ -27,19 +27,20 @@ export const ChangeRoleModal = ({
 }: ChangeRoleModalProps) => {
 	const t = useTranslations();
 	const [newRole, setNewRole] = useState(currentRole);
-	const [isSubmitting, setIsSubmitting] = useState(false);
+	const [isPending, startTransition] = useTransition();
 
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		setIsSubmitting(true);
-		try {
-			// await onRoleChange(memberId, newRole);
-			toast.success(t("team.role_change_success"));
-		} catch (error) {
-			toast.error(t("team.role_change_error"));
-		} finally {
-			setIsSubmitting(false);
-		}
+		startTransition(() => {
+			(async () => {
+				try {
+					// await onRoleChange(memberId, newRole);
+					toast.success(t("team.role_change_success"));
+				} catch (error) {
+					toast.error(t("team.role_change_error"));
+				}
+			})();
+		});
 	};
 
 	return (
@@ -83,8 +84,8 @@ export const ChangeRoleModal = ({
 						</div>
 					</div>
 					<DialogFooter>
-						<Button type="submit" disabled={isSubmitting}>
-							{isSubmitting ? t("shared.loading") : t("shared.submit")}
+						<Button type="submit" disabled={isPending}>
+							{isPending ? t("shared.loading") : t("shared.submit")}
 						</Button>
 					</DialogFooter>
 				</form>
