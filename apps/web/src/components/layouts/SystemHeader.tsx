@@ -1,6 +1,6 @@
 import { NavUser } from "@/components/layouts/blocks/NavUser";
+import NavLink from "@/components/links/NavLink";
 import { getAuthOrRedirect } from "@/features/auth/session/checkUserAuth";
-import Link from "next/link";
 
 export interface SystemHeaderProps {
 	nav: {
@@ -19,7 +19,7 @@ export const SystemHeader = async ({ nav }: SystemHeaderProps) => {
 					<ul className="flex space-x-4">
 						{nav.map((item) => (
 							<li key={item.title}>
-								<Link href={item.url}>{item.title}</Link>
+								<NavLink href={item.url}>{item.title}</NavLink>
 							</li>
 						))}
 					</ul>

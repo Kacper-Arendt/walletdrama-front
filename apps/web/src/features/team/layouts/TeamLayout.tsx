@@ -1,4 +1,4 @@
-import { NavLink } from "@/components/links/NavLink";
+import NavLink from "@/components/links/NavLink";
 import { getTeam } from "@/features/team/api/getTeam";
 import { Typography } from "@ui/components/ui/Typography";
 import type { ReactNode } from "react";
