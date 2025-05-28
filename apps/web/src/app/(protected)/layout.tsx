@@ -15,8 +15,8 @@ export default async function MainLayout({
 
 	const nav: SystemHeaderProps["nav"] = [
 		{
-			url: "/teams",
-			title: t("teams"),
+			url: "/budgets",
+			title: t("budgets"),
 		},
 	];
 

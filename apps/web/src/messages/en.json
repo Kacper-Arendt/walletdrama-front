@@ -2,7 +2,8 @@
 	"pages": {
 		"login": "Login",
 		"register": "Register",
-		"teams": "Teams"
+		"teams": "Teams",
+		"budgets": "Budgets"
 	},
 	"shared": {
 		"logout": "Logout",
@@ -19,7 +20,8 @@
 		"role": "Role",
 		"noResults": "No results found",
 		"my_account": "My account",
-		"openMenu": "Open menu"
+		"openMenu": "Open menu",
+		"view": "View"
 	},
 	"login": {
 		"welcome_back": "Welcome back!",
@@ -78,5 +80,14 @@
 		"members": "Members",
 		"invite_user": "Invite user",
 		"invite_user_description": "The user will receive an email invitation. They will need to log in or create an account. The invitation will appear in the Teams section and will be active for 72 hours."
+	},
+	"budgets": {
+		"create_budget": "Create Budget",
+		"create_budget_description": "Fill out the form below to create a new budget.",
+		"create_success": "Budget created successfully!",
+		"create_error": "Failed to create budget.",
+		"budget_name": "Name",
+		"budget_description": "Description",
+		"your_budgets": "Your Budgets"
 	}
 }
