@@ -1,3 +1,4 @@
+import { getAuthOrRedirect } from "@/features/auth/session/checkUserAuth";
 import Budgets from "@/features/budgets/routes/Budgets";
 import { titleGenerator } from "@/utils/titleGenerator";
 import type { Metadata } from "next";
@@ -12,5 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Home() {
+	await getAuthOrRedirect();
+
 	return <Budgets />;
 }

@@ -1,4 +1,5 @@
 import type { Budgets } from "@/features/budgets/types/budgets";
+import { Button } from "@ui/components/ui/button";
 import {
 	Card,
 	CardDescription,
@@ -16,10 +17,16 @@ export const BudgetListItem = async ({ id, name, description }: Budgets) => {
 		<Card className="w-[280px]">
 			<CardHeader>
 				<CardTitle>{name}</CardTitle>
-				{description && <CardDescription>{description}</CardDescription>}
+				{description && (
+					<CardDescription className="line-clamp-4" title={description}>
+						{description}
+					</CardDescription>
+				)}
 			</CardHeader>
 			<CardFooter className="mt-auto ml-auto">
-				<Link href={`budgets/${id}`}>{t("view")}</Link>
+				<Button asChild>
+					<Link href={`/budgets/${id}`}>{t("view")}</Link>
+				</Button>
 			</CardFooter>
 		</Card>
 	);

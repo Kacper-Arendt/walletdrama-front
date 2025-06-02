@@ -89,5 +89,12 @@
 		"budget_name": "Name",
 		"budget_description": "Description",
 		"your_budgets": "Your Budgets"
+	},
+	"budget": {
+		"add_month": "Add Month",
+		"details": "Details",
+		"description": "Description",
+		"created": "Created",
+		"updated": "Updated"
 	}
 }
