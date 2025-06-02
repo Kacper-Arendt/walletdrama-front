@@ -1,9 +1,5 @@
 "use client";
 
-import {
-	type ResponseStatus,
-	loginUser,
-} from "@/features/auth/login/login.action";
 import { login } from "@/features/auth/login/login.api";
 import { zodResolver } from "@hookform/resolvers/zod";
 import FormItem from "@ui/components/formItem";
@@ -16,7 +12,6 @@ import {
 } from "@ui/components/ui/card";
 import { Form, FormField } from "@ui/components/ui/form";
 import { Input } from "@ui/components/ui/input";
-import { toast } from "@ui/components/ui/sonner";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useRouter } from "next/navigation";

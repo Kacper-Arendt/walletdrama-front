@@ -1,10 +1,6 @@
 import { getBudget } from "@/features/budget/api/getBudget";
-import {
-	Card,
-	CardContent,
-	CardHeader,
-	CardTitle,
-} from "@ui/components/ui/card";
+import { Muted, Small } from "@ui/components/typography";
+import { Card, CardContent } from "@ui/components/ui/card";
 import { getTranslations } from "next-intl/server";
 
 export const BudgetDetails = async ({ id }: { id: string }) => {
@@ -15,38 +11,20 @@ export const BudgetDetails = async ({ id }: { id: string }) => {
 		<Card className="max-w-[500px]">
 			<CardContent className="space-y-4">
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-					{/*<div>*/}
-					{/*	<h3 className="text-sm font-medium text-muted-foreground">*/}
-					{/*		Currency*/}
-					{/*	</h3>*/}
-					{/*	/!*<p className="text-sm">{budget.currency}</p>*!/*/}
-					{/*</div>*/}
 					<div>
-						<h3 className="text-sm font-medium text-muted-foreground">
-							{t("created")}
-						</h3>
-						<p className="text-sm">
-							TODO
-							{/*{format(new Date(budget.createdAt), "PPP")}*/}
-						</p>
+						<Small className="text-muted-foreground">{t("created")}</Small>
+						<p className="text-sm">TODO</p>
 					</div>
 					<div>
-						<h3 className="text-sm font-medium text-muted-foreground">
-							{t("updated")}
-						</h3>
-						<p className="text-sm">
-							TODO
-							{/*{format(new Date(budget.updatedAt), "PPP")}*/}
-						</p>
+						<Small className="text-muted-foreground">{t("updated")}</Small>
+						<Muted className="text-sm">TODO</Muted>
 					</div>
 				</div>
 
 				<div>
-					<h3 className="text-sm font-medium text-muted-foreground">
-						{t("description")}
-					</h3>
+					<Small className="text-muted-foreground">{t("description")}</Small>
 					{budget?.description && (
-						<p className="text-sm mt-1">{budget.description}</p>
+						<Small className="mt-1">{budget.description}</Small>
 					)}
 				</div>
 			</CardContent>

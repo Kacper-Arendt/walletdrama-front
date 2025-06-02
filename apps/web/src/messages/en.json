@@ -21,7 +21,13 @@
 		"noResults": "No results found",
 		"my_account": "My account",
 		"openMenu": "Open menu",
-		"view": "View"
+		"view": "View",
+		"update": "Update",
+		"cache_management": "Cache Management",
+		"clear_cache": "Clear cache",
+		"cache_clear_info": "This will clear the cache and update the information to the latest data.",
+		"cache_cleared": "Cache cleared successfully!",
+		"clearing_cache": "Clearing cache..."
 	},
 	"login": {
 		"welcome_back": "Welcome back!",
@@ -95,6 +101,16 @@
 		"details": "Details",
 		"description": "Description",
 		"created": "Created",
-		"updated": "Updated"
+		"updated": "Updated",
+		"settings": "Settings",
+		"budget_details": "Budget Details",
+		"budget_details_description": "Update the budget details below."
+	},
+	"validation": {
+		"required": "This field is required.",
+		"errorForm": "Please fix the errors in the form",
+		"success": "Success!",
+		"unexpectedError": "An unexpected error occurred.",
+		"notAllowed": "This action is not allowed."
 	}
 }

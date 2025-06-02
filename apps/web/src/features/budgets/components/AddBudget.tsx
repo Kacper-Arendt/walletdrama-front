@@ -59,19 +59,19 @@ export const AddBudget = () => {
 				<form onSubmit={handleSubmit}>
 					<div className="flex flex-col gap-4 py-4">
 						<SimpleFormItem
+							id="name"
 							label={{
 								text: t("budgets.budget_name"),
 								required: true,
-								htmlFor: "name",
 							}}
 						>
 							<Input id="name" name="name" minLength={3} required />
 						</SimpleFormItem>
 						<SimpleFormItem
+							id="description"
 							label={{
 								text: t("budgets.budget_description"),
 								required: false,
-								htmlFor: "description",
 							}}
 						>
 							<Textarea

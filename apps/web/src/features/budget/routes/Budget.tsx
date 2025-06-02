@@ -1,13 +1,14 @@
 import { getBudget } from "@/features/budget/api/getBudget";
 import { BudgetDetails } from "@/features/budget/components/BudgetDetails";
 import { BudgetHeader } from "@/features/budget/components/BudgetHeader";
+import { BudgetSettings } from "@/features/budget/components/BudgetSettings";
 import {
 	Tabs,
 	TabsContent,
 	TabsList,
 	TabsTrigger,
 } from "@ui/components/ui/tabs";
-import { FileText } from "lucide-react";
+import { FileText, Settings } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 
@@ -36,10 +37,10 @@ export const Budget = async ({ id }: { id: string }) => {
 					{/*	<Calendar className="mr-2 h-4 w-4" />*/}
 					{/*	Months*/}
 					{/*</TabsTrigger>*/}
-					{/*<TabsTrigger value="settings">*/}
-					{/*	<Settings className="mr-2 h-4 w-4" />*/}
-					{/*	Settings*/}
-					{/*</TabsTrigger>*/}
+					<TabsTrigger value="settings">
+						<Settings className="mr-2 h-4 w-4" />
+						{t("settings")}
+					</TabsTrigger>
 				</TabsList>
 
 				<TabsContent value="details" className="space-y-4 pt-4">
@@ -56,10 +57,9 @@ export const Budget = async ({ id }: { id: string }) => {
 				{/*	months content goes here*/}
 				{/*</TabsContent>*/}
 
-				{/*<TabsContent value="settings" className="space-y-4 pt-4">*/}
-				{/*	settings content goes here*/}
-				{/*	/!*<BudgetSettings budget={budget} />*!/*/}
-				{/*</TabsContent>*/}
+				<TabsContent value="settings" className="space-y-4 pt-4">
+					<BudgetSettings id={id} />
+				</TabsContent>
 			</Tabs>
 		</>
 	);
