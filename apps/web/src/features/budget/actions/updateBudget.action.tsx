@@ -1,7 +1,7 @@
 "use server";
 
-import { isOwnerAction } from "@/features/budget/actions/isOwner.action";
 import { updateBudget } from "@/features/budget/api/updateBudget";
+import { roleGuard } from "@/features/budget/authorization/roleGuard";
 import { getTranslations } from "next-intl/server";
 import { revalidateTag } from "next/cache";
 import { z } from "zod";
@@ -21,7 +21,7 @@ export async function updateBudgetDetails(
 		description: formData.get("description") as string,
 	};
 
-	const canUpdate = await isOwnerAction(rawData.id);
+	const canUpdate = await roleGuard({ id: rawData.id, requiredRole: "Owner" });
 	if (!canUpdate) {
 		return {
 			success: false,

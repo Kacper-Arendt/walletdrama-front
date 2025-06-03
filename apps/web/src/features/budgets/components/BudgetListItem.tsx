@@ -14,7 +14,7 @@ export const BudgetListItem = async ({ id, name, description }: Budgets) => {
 	const t = await getTranslations("shared");
 
 	return (
-		<Card className="w-[280px]">
+		<Card className="w-full md:w-[280px]">
 			<CardHeader>
 				<CardTitle>{name}</CardTitle>
 				{description && (

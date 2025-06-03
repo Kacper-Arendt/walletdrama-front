@@ -25,7 +25,7 @@
 		"update": "Update",
 		"cache_management": "Cache Management",
 		"clear_cache": "Clear cache",
-		"cache_clear_info": "This will clear the cache and update the information to the latest data.",
+		"cache_clear_info": "This will clear the cache and update the information to the latest data. Use this if you encounter issues with outdated data.",
 		"cache_cleared": "Cache cleared successfully!",
 		"clearing_cache": "Clearing cache..."
 	},
@@ -104,7 +104,14 @@
 		"updated": "Updated",
 		"settings": "Settings",
 		"budget_details": "Budget Details",
-		"budget_details_description": "Update the budget details below."
+		"budget_details_description": "Update the budget details below.",
+		"delete": {
+			"delete": "Delete Budget",
+			"confirm": "Are you sure you want to delete this budget?",
+			"description": "This action cannot be undone. All data associated with this budget will be lost.",
+			"error": "Budget deletion failed!",
+			"success": "Budget deleted!"
+		}
 	},
 	"validation": {
 		"required": "This field is required.",
