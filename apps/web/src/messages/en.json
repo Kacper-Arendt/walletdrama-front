@@ -111,7 +111,8 @@
 			"description": "This action cannot be undone. All data associated with this budget will be lost.",
 			"error": "Budget deletion failed!",
 			"success": "Budget deleted!"
-		}
+		},
+		"categories": "Categories"
 	},
 	"validation": {
 		"required": "This field is required.",
