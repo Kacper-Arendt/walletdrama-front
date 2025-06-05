@@ -112,7 +112,9 @@
 			"error": "Budget deletion failed!",
 			"success": "Budget deleted!"
 		},
-		"categories": "Categories"
+		"categories": "Categories",
+		"expenses": "Expenses",
+		"incomes": "Incomes"
 	},
 	"validation": {
 		"required": "This field is required.",
