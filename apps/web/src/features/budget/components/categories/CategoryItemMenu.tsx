@@ -16,10 +16,14 @@ import { lazy, useState } from "react";
 const UpdateCategory = lazy(
 	() => import("@/features/budget/components/categories/UpdateCategory"),
 );
+const DeleteCategory = lazy(
+	() => import("@/features/budget/components/categories/DeleteCategory"),
+);
 
 export const CategoryItemMenu = (category: Category) => {
 	const t = useTranslations();
 	const [openEdit, setOpenEdit] = useState(false);
+	const [openDelete, setOpenDelete] = useState(false);
 
 	return (
 		<>
@@ -40,17 +44,32 @@ export const CategoryItemMenu = (category: Category) => {
 						{t("shared.update")}
 					</DropdownMenuItem>
 					<DropdownMenuSeparator />
-					<DropdownMenuItem className="text-destructive">
+					<DropdownMenuItem
+						className="text-destructive"
+						onClick={() => setOpenDelete(true)}
+					>
 						<Trash />
 						{t("shared.delete")}
 					</DropdownMenuItem>
 				</DropdownMenuContent>
 			</DropdownMenu>
-			{category && (
+			{openEdit && (
 				<UpdateCategory
 					data={category}
 					open={openEdit}
 					onOpenChange={setOpenEdit}
+				/>
+			)}
+
+			{openDelete && (
+				<DeleteCategory
+					open={openDelete}
+					onOpenChange={setOpenDelete}
+					category={{
+						id: category.id,
+						budgetId: category.budgetId,
+						name: category.name,
+					}}
 				/>
 			)}
 		</>

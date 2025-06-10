@@ -108,7 +108,7 @@ export async function updateCategoryAction(
 
 export async function deleteCategoryAction(id: string, budgetId: string) {
 	try {
-		await deleteCategory(id);
+		await deleteCategory(budgetId, id);
 		revalidateTag(`categories-${budgetId}`);
 		return { deleted: true };
 	} catch (e) {

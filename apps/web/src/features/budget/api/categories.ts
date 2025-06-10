@@ -69,17 +69,20 @@ export const updateCategory = async (data: Category) => {
 	}
 };
 
-export const deleteCategory = async (id: string) => {
+export const deleteCategory = async (budgetId: string, id: string) => {
 	const session = await getSessionCookie();
-	const response = await fetch(`${apiConfig.baseUrl}/api/categories/${id}`, {
-		method: "DELETE",
-		credentials: "include",
-		headers: {
-			"Content-Type": "application/json",
-			Accept: "application/json",
-			Cookie: session?.sessionCookie ?? "",
+	const response = await fetch(
+		`${apiConfig.baseUrl}/api/budgets/${budgetId}/categories/${id}`,
+		{
+			method: "DELETE",
+			credentials: "include",
+			headers: {
+				"Content-Type": "application/json",
+				Accept: "application/json",
+				Cookie: session?.sessionCookie ?? "",
+			},
 		},
-	});
+	);
 	if (!response.ok) {
 		throw new Error("Failed to delete category");
 	}
