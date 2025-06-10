@@ -27,7 +27,9 @@
 		"clear_cache": "Clear cache",
 		"cache_clear_info": "This will clear the cache and update the information to the latest data. Use this if you encounter issues with outdated data.",
 		"cache_cleared": "Cache cleared successfully!",
-		"clearing_cache": "Clearing cache..."
+		"clearing_cache": "Clearing cache...",
+		"name": "Name",
+		"add_new": "Add new"
 	},
 	"login": {
 		"welcome_back": "Welcome back!",

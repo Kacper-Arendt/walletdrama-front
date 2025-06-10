@@ -30,16 +30,19 @@ export const getCategories = async (budgetId: string): Promise<Category[]> => {
 
 export const createCategory = async (data: Omit<Category, "id">) => {
 	const session = await getSessionCookie();
-	const response = await fetch(`${apiConfig.baseUrl}/api/categories`, {
-		method: "POST",
-		credentials: "include",
-		body: JSON.stringify(data),
-		headers: {
-			"Content-Type": "application/json",
-			Accept: "application/json",
-			Cookie: session?.sessionCookie ?? "",
+	const response = await fetch(
+		`${apiConfig.baseUrl}/api/budgets/${data.budgetId}/categories`,
+		{
+			method: "POST",
+			credentials: "include",
+			body: JSON.stringify(data),
+			headers: {
+				"Content-Type": "application/json",
+				Accept: "application/json",
+				Cookie: session?.sessionCookie ?? "",
+			},
 		},
-	});
+	);
 	if (!response.ok) {
 		throw new Error("Failed to create category");
 	}

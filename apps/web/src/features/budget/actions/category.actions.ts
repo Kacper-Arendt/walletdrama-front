@@ -15,25 +15,28 @@ import { revalidateTag } from "next/cache";
 import { z } from "zod";
 
 const categorySchema = z.object({
-	id: z.string().optional(),
-	name: z.string().min(1),
+	id: z.string(),
+	name: z.string().min(3),
 	description: z.string().optional(),
 	budgetId: z.string(),
-	type: z.number(),
+	type: z.preprocess(
+		(val) => (typeof val === "string" ? Number.parseInt(val) : val),
+		z.number(),
+	),
 });
 
 export async function createCategoryAction(
 	prevState: CategoryActionResponse | null,
 	formData: FormData,
 ): Promise<CategoryActionResponse> {
+	const t = await getTranslations();
 	try {
-		const t = await getTranslations();
 		const data = Object.fromEntries(
 			formData.entries(),
 		) as unknown as CategoryFormData;
-		console.log(data);
+
 		const canUpdate = await roleGuard({
-			id: data.id as string,
+			id: data.budgetId,
 			requiredRole: "Owner",
 		});
 		if (!canUpdate) {
@@ -48,20 +51,21 @@ export async function createCategoryAction(
 		if (!validated.success) {
 			return {
 				success: false,
-				message: "Invalid data",
+				message: t("validation.errorForm"),
 				errors: validated.error.flatten().fieldErrors,
 				inputs: data,
 			};
 		}
+		console.log(validated.data);
 		await createCategory(validated.data);
 		revalidateTag(`categories-${validated.data.budgetId}`);
 		return {
 			success: true,
-			message: "Category created!",
-			inputs: validated.data,
+			message: "",
+			inputs: null,
 		};
 	} catch (e) {
-		return { success: false, message: "Unexpected error" };
+		return { success: false, message: t("validation.unexpectedError") };
 	}
 }
 

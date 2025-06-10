@@ -9,6 +9,7 @@ interface SimpleFormItemProps {
 		required?: boolean;
 	};
 	errors?: string[] | null;
+	className?: string;
 }
 
 export const SimpleFormItem = ({
@@ -16,9 +17,10 @@ export const SimpleFormItem = ({
 	children,
 	errors,
 	id,
+	className,
 }: SimpleFormItemProps) => {
 	return (
-		<div className="flex flex-col gap-2">
+		<div className={`flex flex-col gap-1 ${className || ""}`}>
 			{label && (
 				<Label htmlFor={id} className="text-right">
 					{label.text}
