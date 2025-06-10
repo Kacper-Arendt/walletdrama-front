@@ -25,6 +25,10 @@ const categorySchema = z.object({
 	),
 });
 
+const categoryUpdateSchema = categorySchema.extend({
+	id: z.string().min(1, "Category ID is required"),
+});
+
 export async function createCategoryAction(
 	prevState: CategoryActionResponse | null,
 	formData: FormData,
@@ -62,7 +66,6 @@ export async function createCategoryAction(
 		return {
 			success: true,
 			message: "",
-			inputs: null,
 		};
 	} catch (e) {
 		return { success: false, message: t("validation.unexpectedError") };
@@ -73,28 +76,33 @@ export async function updateCategoryAction(
 	prevState: CategoryActionResponse | null,
 	formData: FormData,
 ): Promise<CategoryActionResponse> {
+	const t = await getTranslations();
+
 	try {
 		const data = Object.fromEntries(
 			formData.entries(),
 		) as unknown as CategoryFormData;
-		const validated = categorySchema.safeParse(data);
+		const validated = categoryUpdateSchema.safeParse(data);
+
 		if (!validated.success) {
 			return {
 				success: false,
-				message: "Invalid data",
+				message: t("validation.errorForm"),
 				errors: validated.error.flatten().fieldErrors,
 				inputs: data,
 			};
 		}
+
 		await updateCategory(validated.data);
 		revalidateTag(`categories-${validated.data.budgetId}`);
+
 		return {
 			success: true,
-			message: "Category updated!",
+			message: "",
 			inputs: validated.data,
 		};
 	} catch (e) {
-		return { success: false, message: "Unexpected error" };
+		return { success: false, message: t("validation.unexpectedError") };
 	}
 }
 

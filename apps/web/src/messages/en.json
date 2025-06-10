@@ -29,7 +29,11 @@
 		"cache_cleared": "Cache cleared successfully!",
 		"clearing_cache": "Clearing cache...",
 		"name": "Name",
-		"add_new": "Add new"
+		"add_new": "Add new",
+		"actions": "Actions",
+		"delete": "Delete",
+		"category": "Category",
+		"description": "Description"
 	},
 	"login": {
 		"welcome_back": "Welcome back!",
@@ -116,7 +120,11 @@
 		},
 		"categories": "Categories",
 		"expenses": "Expenses",
-		"incomes": "Incomes"
+		"incomes": "Incomes",
+		"change_category": "Change Category",
+		"change_category_description": "Change the category of an expense or income.",
+		"category_change_success": "Category changed successfully!",
+		"category_change_error": "Failed to change category."
 	},
 	"validation": {
 		"required": "This field is required.",

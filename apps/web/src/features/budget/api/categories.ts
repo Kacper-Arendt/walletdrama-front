@@ -52,7 +52,7 @@ export const createCategory = async (data: Omit<Category, "id">) => {
 export const updateCategory = async (data: Category) => {
 	const session = await getSessionCookie();
 	const response = await fetch(
-		`${apiConfig.baseUrl}/api/categories/${data.id}`,
+		`${apiConfig.baseUrl}/api/budgets/${data.budgetId}/categories/${data.id}`,
 		{
 			method: "PUT",
 			credentials: "include",
@@ -67,7 +67,6 @@ export const updateCategory = async (data: Category) => {
 	if (!response.ok) {
 		throw new Error("Failed to update category");
 	}
-	return (await response.json()) as Category;
 };
 
 export const deleteCategory = async (id: string) => {
